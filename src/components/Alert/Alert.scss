@@ -1,0 +1,49 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$AlertSizes: (
+  sm: var(--spacing-2),
+  md: var(--spacing-3),
+  lg: var(--spacing-4),
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-alert {
+  display: inline-block;
+  border: var(--border);
+  border-radius: var(--radius);
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. appearances
+ * 2. sizes
+ *
+ */
+
+/*----------  1. appearance  ----------*/
+
+@each $appearance in $appearances {
+  .c-alert--#{$appearance} {
+    color: var(--color-#{$appearance}-500);
+    border-color: var(--color-#{$appearance}-500);
+  }
+}
+
+/*----------  2. size  ----------*/
+
+@each $size, $value in $AlertSizes {
+  .c-alert--#{$size} {
+    padding: $value;
+  }
+}

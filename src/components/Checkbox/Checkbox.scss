@@ -1,0 +1,62 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$CheckboxSize: (
+  sm: 20px,
+  md: 25px,
+  lg: 30px
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-checkbox {
+  appearance: none;
+  border: var(--border);
+  border-color: var(--color-gray-400);
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius);
+  outline: 0;
+  transition: opacity .3s ease-in-out;
+
+  &:focus {
+    border-color: var(--color-default-500);
+  }
+
+  &:checked:after {
+    content: '✓';
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-default-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $type, $value in $CheckboxSize {
+  .c-checkbox--#{$type} {
+    width: $value;
+    height: $value;
+  }
+}

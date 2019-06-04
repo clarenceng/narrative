@@ -1,0 +1,29 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-radio-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.c-radio-group__legend {
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+}
+
+.c-radio-group__label {
+  display: inline-flex;
+  align-items: center;
+
+  input {
+    margin-left: var(--spacing-1);
+  }
+
+  &:not(:last-child) {
+    margin-right: var(--spacing-3);
+  }
+}

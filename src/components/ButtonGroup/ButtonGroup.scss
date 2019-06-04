@@ -1,0 +1,109 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$ButtonSizes: (
+  sm: (var(--input-size-sm), var(--spacing-2)),
+  md: (var(--input-size-md), var(--spacing-3)),
+  lg: (var(--input-size-lg), var(--spacing-4)),
+);
+
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-button-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.c-button-group__legend {
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+}
+
+.c-button-group__label {
+  position: relative;
+
+  input {
+    appearance: none;
+    margin: 0;
+  }
+
+  &:first-of-type .c-button-group__button {
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+  }
+
+  &:last-of-type .c-button-group__button {
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-right: var(--border);
+  }
+}
+
+.c-button-group__button {
+  display: inline-flex;
+  align-items: center;
+  border-left: var(--border);
+  border-bottom: var(--border);
+  border-top: var(--border);
+  color: var(--color-white);
+  font-size: var(--font-size-5);
+  cursor: pointer;
+  outline: none;
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. appearances
+ * 2. sizes
+ *
+ */
+
+/*----------  1. appearance  ----------*/
+
+@each $appearance in $appearances {
+  .c-button-group__button--#{$appearance} {
+    background-color: var(--color-white);
+    border-color: var(--color-#{$appearance}-500);
+    color: var(--color-#{$appearance}-500);
+
+    &:hover {
+      background-color: var(--color-#{$appearance}-400);
+      border-color: var(--color-#{$appearance}-400);
+      color: var(--color-white);
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--color-#{$appearance}-600);
+      border-color: var(--color-#{$appearance}-600);
+    }
+
+
+    .c-button-group__input:checked + & {
+      background-color: var(--color-#{$appearance}-500);
+      border-color: var(--color-#{$appearance}-500);
+      color: var(--color-white);
+    }
+  }
+}
+
+/*----------  2. sizes  ----------*/
+
+@each $size, $value in $ButtonSizes {
+  .c-button-group__button--#{$size} {
+    height: nth($value, 1);
+    padding-left: nth($value, 2);
+    padding-right: nth($value, 2);
+  }
+}

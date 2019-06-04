@@ -1,0 +1,66 @@
+@import '../../styles/utils.scss';
+@import '../../styles/tools/animation.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$listSize: (
+  sm: var(--spacing-1),
+  md: var(--spacing-2),
+  lg: var(--spacing-3),
+);
+
+$listStyle: none, circle, decimal, disc;
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ * 2. list style
+ * 3. divider
+ * 4. horizontal
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $size, $value in $listSize {
+  .c-list--#{$size} > .c-list__item {
+    padding: $value;
+  }
+}
+
+/*----------  2. list style  ----------*/
+
+@each $style in $listStyle {
+  .c-list--#{$style} {
+    list-style-position: inside;
+    list-style-type: $style;
+  }
+}
+
+/*----------  3. divider  ----------*/
+
+.c-list--divider > .c-list__item:not(:last-of-type) {
+  border-bottom: var(--border) var(--color-gray-400);
+}
+
+/*----------  3. horizontal  ----------*/
+
+.c-list--horizontal {
+  display: flex;
+}

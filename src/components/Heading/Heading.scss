@@ -1,0 +1,41 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$HeadingTypes: (
+  h1: (40px, var(--spacing-4)),
+  h2: (36px, var(--spacing-4)),
+  h3: (32px, var(--spacing-3)),
+  h4: (28px, var(--spacing-3)),
+  h5: (24px, var(--spacing-2)),
+  h6: (20px, var(--spacing-2))
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-heading {
+  display: block;
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $type, $value in $HeadingTypes {
+  .c-heading--#{$type} {
+    font-size: nth($value, 1);
+    margin-bottom: nth($value, 2);
+  }
+}

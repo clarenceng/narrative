@@ -1,0 +1,79 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$ButtonSizes: (
+  sm: (var(--input-size-sm), var(--spacing-2)),
+  md: (var(--input-size-md), var(--spacing-3)),
+  lg: (var(--input-size-lg), var(--spacing-4)),
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-button {
+  display: inline-block;
+  border: var(--border);
+  border-radius: var(--radius);
+  color: var(--color-white);
+  font-size: var(--font-size-5);
+  cursor: pointer;
+  outline: none;
+
+  &:disabled {
+    background-color: var(--color-gray-500);
+    border-color: var(--color-gray-500);
+    cursor: not-allowed;
+  }
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. appearances
+ * 2. sizes
+ * 3. block
+ *
+ */
+
+/*----------  1. appearance  ----------*/
+
+@each $appearance in $appearances {
+  .c-button--#{$appearance} {
+    background-color: var(--color-#{$appearance}-500);
+    border-color: var(--color-#{$appearance}-500);
+
+    &:hover {
+      background-color: var(--color-#{$appearance}-400);
+      border-color: var(--color-#{$appearance}-400);
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--color-#{$appearance}-600);
+      border-color: var(--color-#{$appearance}-600);
+    }
+  }
+}
+
+/*----------  2. size  ----------*/
+
+@each $size, $value in $ButtonSizes {
+  .c-button--#{$size} {
+    height: nth($value, 1);
+    padding-left: nth($value, 2);
+    padding-right: nth($value, 2);
+  }
+}
+
+/*----------  3. block  ----------*/
+
+.c-button--block {
+  width: 100%;
+}

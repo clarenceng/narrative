@@ -1,0 +1,31 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-chip {
+  display: inline-block;
+  border-radius: 25px;
+  font-size: var(--font-size-6);
+  color: var(--color-white);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. appearances
+ *
+ */
+
+/*----------  1. appearance  ----------*/
+
+@each $appearance in $appearances {
+  .c-chip--#{$appearance} {
+    background-color: var(--color-#{$appearance}-500);
+  }
+}

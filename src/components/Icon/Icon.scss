@@ -1,0 +1,73 @@
+@import '../../styles/utils.scss';
+@import '../../styles/tools/animation.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$iconSize: (
+  sm: 12px,
+  md: 16px,
+  lg: 24px
+);
+
+$faces: (
+  down: rotate(0deg),
+  left: rotate(90deg),
+  right: rotate(-90deg),
+  up: rotate(180deg)
+);
+
+$colors: 'white', 'default', 'danger', 'info', 'success', 'warning';
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-icon {
+  display: inline-block;
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ * 2. face
+ * 3. animation
+ * 4. colors
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $size, $value in $iconSize {
+  .c-icon--#{$size} svg {
+    width: $value;
+    height: $value;
+  }
+}
+
+/*----------  2. face  ----------*/
+
+@each $face, $value in $faces {
+  .c-icon--#{$face} svg {
+    transform: $value;
+  }
+}
+
+/*----------  3. animation  ----------*/
+
+.c-icon--rotate {
+  animation: rotate .8s linear infinite;
+}
+
+/*----------  4. colors  ----------*/
+
+@each $color in $colors {
+  .c-icon--#{$color} svg {
+    color: var(--color-#{$color}-500);
+  }
+}

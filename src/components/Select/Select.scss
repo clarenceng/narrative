@@ -1,0 +1,67 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$InputSizes: (
+  sm: (var(--input-size-sm), var(--spacing-2)),
+  md: (var(--input-size-md), var(--spacing-3)),
+  lg: (var(--input-size-lg), var(--spacing-4)),
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-select-container {
+  position: relative;
+  display: inline-block;
+}
+
+.c-select {
+  display: inline-block;
+  background-color: var(--color-white);
+  border: var(--border) var(--color-gray-500);
+  border-radius: var(--radius);
+  font-size: var(--font-size-5);
+  appearance: none;
+  outline: 0;
+  width: 100%;
+
+  &:focus {
+    border-color: var(--color-default-500);
+  }
+}
+
+.c-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: var(--spacing-2) solid transparent;
+  border-right: var(--spacing-2) solid transparent;
+  border-top: var(--spacing-2) solid var(--color-gray-600);
+  position: absolute;
+  top: 17px;
+  right: 14px;
+  pointer-events: none;
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $size, $value in $InputSizes {
+  .c-select--#{$size} {
+    height: nth($value, 1);
+    padding-left: nth($value, 2);
+    padding-right: calc(#{nth($value, 2)} + 32px);
+  }
+}

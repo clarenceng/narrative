@@ -1,0 +1,25 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$height: 10px;
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-progress-bar {
+  background-color: var(--color-gray-400);
+  width: 100%;
+  height: $height;
+  border-radius: var(--radius);
+}
+
+.c-progress-bar__indicator {
+  height: 100%;
+  background-color: var(--color-default-400);
+  border-radius: var(--radius);
+  transition: width .3s ease-in-out;
+}

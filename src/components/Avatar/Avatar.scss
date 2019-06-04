@@ -1,0 +1,58 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$AvatarSizes: (
+  sm: 30px,
+  md: 40px,
+  lg: 50px,
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. appearances
+ * 2. sizes
+ *
+ */
+
+/*----------  1. appearance  ----------*/
+
+@each $appearance in $appearances {
+  .c-avatar--#{$appearance} {
+    background-color: var(--color-#{$appearance}-500);
+  }
+}
+
+/*----------  2. sizes  ----------*/
+
+@each $size, $value in $AvatarSizes {
+  .c-avatar--#{$size} {
+    width: $value;
+    height: $value;
+  }
+}
