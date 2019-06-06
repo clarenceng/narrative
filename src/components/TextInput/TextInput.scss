@@ -19,6 +19,7 @@ $TextInputSizes: (
   border: var(--border) var(--color-gray-500);
   border-radius: var(--radius);
   font-size: var(--font-size-5);
+  width: 100%;
   outline: 0;
 
   &:focus {

@@ -11,7 +11,7 @@ interface ICard extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Card = ({
   children,
-  size,
+  size = 'md',
   block,
   shadow,
   className

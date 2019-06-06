@@ -4,7 +4,7 @@ import { size, appearance } from '../../types'
 import * as Icons from './Icons'
 import './Icon.scss'
 
-export type iconType = 'Arrow' | 'Calendar' | 'Chevron' | 'Load' | 'Mail' | 'Minus' | 'Plus' | 'Trash'
+export type iconType = 'Arrow' | 'Calendar' | 'Chevron' | 'Load' | 'Mail' | 'Minus' | 'Pencil' | 'Plus' | 'Trash'
 export type faceType = 'down' | 'left' | 'right' | 'up'
 export type colorType = 'white' | appearance
 

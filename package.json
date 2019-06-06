@@ -10,7 +10,10 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
     "react-scripts": "2.1.8",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "typescript": "3.4.3"
   },
   "scripts": {
@@ -40,6 +43,7 @@
     "@storybook/addons": "^5.0.11",
     "@storybook/react": "^5.0.11",
     "@types/classnames": "^2.2.7",
+    "@types/react-redux": "^7.0.9",
     "@types/storybook__addon-a11y": "^5.0.0",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__addon-knobs": "^5.0.0",
