@@ -25,7 +25,7 @@ export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: I
         buyOrdersLoading: false,
         data: [
           ...state.data,
-          ...action.buyOrders
+          ...action.buyOrders!
         ]
       }
     }
@@ -46,8 +46,8 @@ export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: I
     }
     case actionTypes.BUYORDER_UPDATE_SUBMIT_SUCCESS: {
       const updatedData = state.data.map((data) =>
-        data.id === action.buyOrders[0].id 
-          ? action.buyOrders[0]
+        data.id === action.buyOrders![0].id 
+          ? action.buyOrders![0]
           : data
       )
       return {

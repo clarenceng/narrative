@@ -15,7 +15,7 @@ const dataPackageTypeOptions: IDataPackageTypeOptions[] = dataPackageTypes.map((
   label: type
 }))
 
-const initalFormData: IBuyOrder = {
+export const initalFormData: IBuyOrder = {
   id: 0,
   name: '',
   maxBidPrice: 0,

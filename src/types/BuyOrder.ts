@@ -37,8 +37,9 @@ export interface IBuyOrdersState {
   buyOrderToUpdate?: IBuyOrder
 }
 
-export interface IBuyOrderActionTypes extends IBuyOrders {
+export interface IBuyOrderActionTypes {
   type: BuyOrderActions
+  buyOrders?: IBuyOrder[]
   error?: string
   id?: number
 }
