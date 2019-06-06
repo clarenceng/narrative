@@ -9,7 +9,8 @@ const initialState: IBuyOrdersState = {
 export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: IBuyOrderActionTypes) => {
   switch(action.type) {
     case actionTypes.BUYORDER_GET: 
-    case actionTypes.BUYORDER_ADD: {
+    case actionTypes.BUYORDER_ADD:
+    case actionTypes.BUYORDER_DELETE: {
       return {
         ...state,
         buyOrdersLoading: true
@@ -26,8 +27,17 @@ export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: I
         ]
       }
     }
+    case actionTypes.BUYORDER_DELETE_SUCCESS: {
+      const newData = state.data.filter((data) => data.id !== action.id)
+      return {
+        ...state,
+        buyOrdersLoading: false,
+        data: newData
+      }
+    }
     case actionTypes.BUYORDER_GET_FAIL:
-    case actionTypes.BUYORDER_ADD_FAIL: {
+    case actionTypes.BUYORDER_ADD_FAIL:
+    case actionTypes.BUYORDER_DELETE_FAIL: {
       return {
         ...state,
         buyOrdersLoading: false,

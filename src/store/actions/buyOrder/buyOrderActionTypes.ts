@@ -8,5 +8,8 @@ export const BUYORDER_ADD: BuyOrderActions = 'BUYORDER_ADD';
 export const BUYORDER_ADD_SUCCESS: BuyOrderActions = 'BUYORDER_ADD_SUCCESS';
 export const BUYORDER_ADD_FAIL: BuyOrderActions = 'BUYORDER_ADD_FAIL';
 
-export const BUYORDER_DELETE = 'BUYORDER_DELETE';
+export const BUYORDER_DELETE: BuyOrderActions = 'BUYORDER_DELETE';
+export const BUYORDER_DELETE_SUCCESS: BuyOrderActions = 'BUYORDER_DELETE_SUCCESS';
+export const BUYORDER_DELETE_FAIL: BuyOrderActions = 'BUYORDER_DELETE_FAIL';
+
 export const BUYORDER_UPDATE = 'BUYORDER_UPDATE';

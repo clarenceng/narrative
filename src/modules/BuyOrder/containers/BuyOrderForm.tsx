@@ -36,14 +36,9 @@ const Container = ({
     })
   }, [buyOrders])
 
-  const handleOnSubmit = () => {
-    onAddBuyOrders(formData)
-    console.log('form submit', formData)
-  }
+  const handleOnSubmit = () => onAddBuyOrders(formData, () => setFormData(initalFormData))
 
-  const handleOnCancel = () => {
-    console.log('form cancel')
-  }
+  const handleOnCancel = () => setFormData(initalFormData)
 
   const handleInputChange = (
     evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -70,7 +65,7 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({
-  onAddBuyOrders: (formData: IBuyOrder) => dispatch( actions.buyOrderAdd(formData) )
+  onAddBuyOrders: (formData: IBuyOrder, cb: () => void) => dispatch( actions.buyOrderAdd(formData, cb) )
 })
 
 export const BuyOrderForm =  connect(mapStateToProps, mapDispatchToProps)(Container)

@@ -2,6 +2,8 @@ import * as actionTypes from './buyOrderActionTypes';
 import { IBuyOrder } from '../../../types/BuyOrder';
 import { Dispatch } from 'redux';
 
+// Buy Order Fetch action
+
 const buyOrderGetStart = () => ({
   type: actionTypes.BUYORDER_GET
 })
@@ -30,6 +32,8 @@ export const buyOrderGet = () => {
   }
 }
 
+// Buy Order Add action
+
 const buyOrderAddStart = () => ({
   type: actionTypes.BUYORDER_ADD
 })
@@ -44,23 +48,55 @@ const buyOrderAddFail = (error: string) => ({
   error: error
 })
 
-export const buyOrderAdd = (formData: IBuyOrder) => {
+export const buyOrderAdd = (formData: IBuyOrder, cb: () => void) => {
   const firebaseKey = formData.id - 1
   return (dispatch: Dispatch<any>) => {
     dispatch(buyOrderAddStart());
     fetch(`https://narrative-a73da.firebaseio.com/buyOrders/${firebaseKey}.json`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(formData)
     })
       .then(res => res.json())
       .then(buyOrder => {
         dispatch(buyOrderAddSuccess(buyOrder))
+        cb()
       })
       .catch( err => {
         dispatch(buyOrderAddFail(err))
       })
   }
 }
+
+// Buy Order Delete action
+
+const buyOrderDeleteStart = () => ({
+  type: actionTypes.BUYORDER_DELETE
+})
+
+const buyOrderDeleteSuccess = (id: number) => ({
+  type: actionTypes.BUYORDER_DELETE_SUCCESS,
+  id: id
+})
+
+const buyOrderDeleteFail = (error: string) => ({
+  type: actionTypes.BUYORDER_DELETE_FAIL,
+  error: error
+})
+
+export const buyOrderDelete = (id: number) => {
+  return (dispatch: Dispatch<any>) => {
+    dispatch(buyOrderDeleteStart());
+    fetch(`https://narrative-a73da.firebaseio.com/buyOrders/${id - 1}.json`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(() => {
+        dispatch(buyOrderDeleteSuccess(id))
+      })
+      .catch( err => {
+        dispatch(buyOrderDeleteFail(err))
+      })
+  }
+}
+
+// Buy Order Update action

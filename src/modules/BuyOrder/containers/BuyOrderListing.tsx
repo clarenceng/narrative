@@ -9,23 +9,26 @@ import { AppState } from '../../../store';
 
 type AppProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 
-const Container = (props: AppProps) => {
+const Container = ({
+  buyOrders,
+  isLoading,
+  onFetchBuyOrders,
+  onDeleteBuyOrders
+}: AppProps) => {
   useEffect(() => {
-    props.onFetchBuyOrders()
+    onFetchBuyOrders()
   }, [])
 
   const handleOnEdit = (id: number) => {
     console.log('edit', id)
   }
 
-  const handleOnDelete = (id: number) => {
-    console.log('delete', id)
-  }
-
-  return props.isLoading
+  const handleOnDelete = (id: number) => onDeleteBuyOrders(id)
+  
+  return isLoading
     ? <Icon type='Load' size='md' color='info' rotate />
     : <BuyOrderListingComponent
-        buyOrders={ props.buyOrders }
+        buyOrders={ buyOrders }
         handleOnEdit={ handleOnEdit }
         handleOnDelete={ handleOnDelete }
       />
@@ -37,7 +40,8 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({
-  onFetchBuyOrders: () => dispatch( actions.buyOrderGet() )
+  onFetchBuyOrders: () => dispatch( actions.buyOrderGet() ),
+  onDeleteBuyOrders: (id: number) => dispatch( actions.buyOrderDelete(id) )
 })
 
 export const BuyOrderListing =  connect(mapStateToProps, mapDispatchToProps)(Container)

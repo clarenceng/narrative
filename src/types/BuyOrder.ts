@@ -7,6 +7,9 @@ export type BuyOrderActions =
   | 'BUYORDER_ADD'
   | 'BUYORDER_ADD_SUCCESS'
   | 'BUYORDER_ADD_FAIL'
+  | 'BUYORDER_DELETE'
+  | 'BUYORDER_DELETE_SUCCESS'
+  | 'BUYORDER_DELETE_FAIL'
 
 export interface IBuyOrder {
   id: number
@@ -32,4 +35,5 @@ export interface IBuyOrdersState {
 export interface IBuyOrderActionTypes extends IBuyOrders {
   type: BuyOrderActions
   error?: string
+  id?: number
 }
