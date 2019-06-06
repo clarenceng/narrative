@@ -1,28 +1,43 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { BuyOrderListing } from '../components'
+import { BuyOrderListing as BuyOrderListingComponent } from '../components'
 import * as actions from '../../../store/actions'
-import { IBuyOrdersState } from '../../../store/reducers/buyOrder';
+import { Icon } from '../../../components';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { AppState } from '../../../store';
 
-const Container = (props: any) => {
+type AppProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+
+const Container = (props: AppProps) => {
   useEffect(() => {
     props.onFetchBuyOrders()
   }, [])
-  return (
-    <BuyOrderListing
-      buyOrders={ props.buyOrders }
-      isLoading={ props.isLoading }
-    />
-  )
+
+  const handleOnEdit = (id: number) => {
+    console.log('edit', id)
+  }
+
+  const handleOnDelete = (id: number) => {
+    console.log('delete', id)
+  }
+
+  return props.isLoading
+    ? <Icon type='Load' size='md' color='info' rotate />
+    : <BuyOrderListingComponent
+        buyOrders={ props.buyOrders }
+        handleOnEdit={ handleOnEdit }
+        handleOnDelete={ handleOnDelete }
+      />
 }
 
-const mapStateToProps = (state: {buyOrders: IBuyOrdersState}) => ({
+const mapStateToProps = (state: AppState) => ({
   buyOrders: state.buyOrders.data,
   isLoading: state.buyOrders.buyOrdersLoading
 })
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({
   onFetchBuyOrders: () => dispatch( actions.buyOrderGet() )
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Container)
+export const BuyOrderListing =  connect(mapStateToProps, mapDispatchToProps)(Container)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { BuyOrder } from '../BuyOrder/containers'
+import { BuyOrder } from '../BuyOrder';
 import './App.css';
-// import { IBuyOrder } from '../BuyOrder/types';
 
 export class App extends Component {
   render() {

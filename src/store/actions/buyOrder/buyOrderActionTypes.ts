@@ -1,8 +1,12 @@
-export const BUYORDER_GET = 'BUYORDER_GET';
-export const BUYORDER_GET_SUCCESS = 'BUYORDER_GET_SUCCESS'
-export const BUYORDER_GET_FAIL = 'BUYORDER_GET_FAIL'
+import { BuyOrderActions } from '../../../types/BuyOrder';
 
+export const BUYORDER_GET: BuyOrderActions = 'BUYORDER_GET';
+export const BUYORDER_GET_SUCCESS: BuyOrderActions = 'BUYORDER_GET_SUCCESS'
+export const BUYORDER_GET_FAIL: BuyOrderActions = 'BUYORDER_GET_FAIL'
 
-export const BUYORDER_ADD = 'BUYORDER_ADD';
+export const BUYORDER_ADD: BuyOrderActions = 'BUYORDER_ADD';
+export const BUYORDER_ADD_SUCCESS: BuyOrderActions = 'BUYORDER_ADD_SUCCESS';
+export const BUYORDER_ADD_FAIL: BuyOrderActions = 'BUYORDER_ADD_FAIL';
+
 export const BUYORDER_DELETE = 'BUYORDER_DELETE';
 export const BUYORDER_UPDATE = 'BUYORDER_UPDATE';

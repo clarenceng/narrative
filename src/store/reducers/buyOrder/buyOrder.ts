@@ -1,25 +1,22 @@
-import { IBuyOrder } from '../../../modules/BuyOrder/types'
 import * as actionTypes from '../../actions/buyOrder/buyOrderActionTypes'
-
-export interface IBuyOrdersState {
-  buyOrdersLoading: boolean
-  data: IBuyOrder[]
-}
+import { IBuyOrdersState, IBuyOrderActionTypes } from '../../../types/BuyOrder';
 
 const initialState: IBuyOrdersState = {
   buyOrdersLoading: false,
   data: []
 }
 
-export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: any) => {
+export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: IBuyOrderActionTypes) => {
   switch(action.type) {
-    case actionTypes.BUYORDER_GET: {
+    case actionTypes.BUYORDER_GET: 
+    case actionTypes.BUYORDER_ADD: {
       return {
         ...state,
         buyOrdersLoading: true
       }
     }
-    case actionTypes.BUYORDER_GET_SUCCESS: {
+    case actionTypes.BUYORDER_GET_SUCCESS:
+    case actionTypes.BUYORDER_ADD_SUCCESS: {
       return {
         ...state,
         buyOrdersLoading: false,
@@ -29,7 +26,8 @@ export const buyOrderReducer = (state: IBuyOrdersState = initialState, action: a
         ]
       }
     }
-    case actionTypes.BUYORDER_GET_FAIL: {
+    case actionTypes.BUYORDER_GET_FAIL:
+    case actionTypes.BUYORDER_ADD_FAIL: {
       return {
         ...state,
         buyOrdersLoading: false,
