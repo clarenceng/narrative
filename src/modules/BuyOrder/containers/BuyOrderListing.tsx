@@ -13,17 +13,16 @@ const Container = ({
   buyOrders,
   isLoading,
   onFetchBuyOrders,
-  onDeleteBuyOrders
+  onDeleteBuyOrder,
+  onUpdateBuyOrder
 }: AppProps) => {
   useEffect(() => {
     onFetchBuyOrders()
   }, [])
 
-  const handleOnEdit = (id: number) => {
-    console.log('edit', id)
-  }
+  const handleOnEdit = (id: number) => onUpdateBuyOrder(id)
 
-  const handleOnDelete = (id: number) => onDeleteBuyOrders(id)
+  const handleOnDelete = (id: number) => onDeleteBuyOrder(id)
   
   return isLoading
     ? <Icon type='Load' size='md' color='info' rotate />
@@ -41,7 +40,8 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({
   onFetchBuyOrders: () => dispatch( actions.buyOrderGet() ),
-  onDeleteBuyOrders: (id: number) => dispatch( actions.buyOrderDelete(id) )
+  onDeleteBuyOrder: (id: number) => dispatch( actions.buyOrderDelete(id) ),
+  onUpdateBuyOrder: (id: number) => dispatch( actions.buyOrderUpdate(id) )
 })
 
 export const BuyOrderListing =  connect(mapStateToProps, mapDispatchToProps)(Container)

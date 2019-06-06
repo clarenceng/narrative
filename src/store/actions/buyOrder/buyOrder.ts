@@ -100,3 +100,46 @@ export const buyOrderDelete = (id: number) => {
 }
 
 // Buy Order Update action
+
+const buyOrderUpdateStart = (id: number) => ({
+  type: actionTypes.BUYORDER_UPDATE,
+  id
+})
+
+export const buyOrderUpdate = (id: number) => {
+  return (dispatch: Dispatch<any>) => {
+    dispatch(buyOrderUpdateStart(id));
+  }
+}
+
+const buyOrderUpdateSubmitStart = () => ({
+  type: actionTypes.BUYORDER_UPDATE_SUBMIT
+})
+
+const buyOrderUpdateSubmitSuccess = (buyOrder: IBuyOrder) => ({
+  type: actionTypes.BUYORDER_UPDATE_SUBMIT_SUCCESS,
+  buyOrders: [buyOrder]
+})
+
+const buyOrderUpdateSubmitFail = (error: string) => ({
+  type: actionTypes.BUYORDER_UPDATE_SUBMIT_FAIL,
+  error: error
+})
+export const buyOrderUpdateSubmit = (formData: IBuyOrder, cb: () => void) => {
+  const firebaseKey = formData.id - 1
+  return (dispatch: Dispatch<any>) => {
+    dispatch(buyOrderUpdateSubmitStart());
+    fetch(`https://narrative-a73da.firebaseio.com/buyOrders/${firebaseKey}.json`, {
+      method: 'PUT',
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json())
+      .then(buyOrder => {
+        dispatch(buyOrderUpdateSubmitSuccess(buyOrder))
+        cb()
+      })
+      .catch( err => {
+        dispatch(buyOrderUpdateSubmitFail(err))
+      })
+  }
+}

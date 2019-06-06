@@ -10,6 +10,10 @@ export type BuyOrderActions =
   | 'BUYORDER_DELETE'
   | 'BUYORDER_DELETE_SUCCESS'
   | 'BUYORDER_DELETE_FAIL'
+  | 'BUYORDER_UPDATE'
+  | 'BUYORDER_UPDATE_SUBMIT'
+  | 'BUYORDER_UPDATE_SUBMIT_SUCCESS'
+  | 'BUYORDER_UPDATE_SUBMIT_FAIL'
 
 export interface IBuyOrder {
   id: number
@@ -30,6 +34,7 @@ export interface IDataPackageTypeOptions {
 export interface IBuyOrdersState {
   buyOrdersLoading: boolean
   data: IBuyOrder[]
+  buyOrderToUpdate?: IBuyOrder
 }
 
 export interface IBuyOrderActionTypes extends IBuyOrders {

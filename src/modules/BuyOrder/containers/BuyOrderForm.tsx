@@ -24,7 +24,9 @@ const initalFormData: IBuyOrder = {
 
 const Container = ({
   buyOrders,
-  onAddBuyOrders
+  onAddBuyOrders,
+  buyOrderToUpdate,
+  onUpdateBuyOrders
 }: AppProps) => {
   const [formData, setFormData] = useState(initalFormData)
 
@@ -36,7 +38,15 @@ const Container = ({
     })
   }, [buyOrders])
 
+  useEffect(() => {
+    if (buyOrderToUpdate) {
+      setFormData(buyOrderToUpdate)
+    }
+  }, [buyOrderToUpdate])
+
   const handleOnSubmit = () => onAddBuyOrders(formData, () => setFormData(initalFormData))
+
+  const handleOnUpdate = () => onUpdateBuyOrders(formData, () => setFormData(initalFormData))
 
   const handleOnCancel = () => setFormData(initalFormData)
 
@@ -53,6 +63,7 @@ const Container = ({
       formData={ formData }
       dataPackageTypeOptions={ dataPackageTypeOptions }
       handleOnSubmit={ handleOnSubmit }
+      handleOnUpdate={ handleOnUpdate }
       handleOnCancel={ handleOnCancel }
       handleInputChange={ handleInputChange }
     />
@@ -61,11 +72,13 @@ const Container = ({
 
 const mapStateToProps = (state: AppState) => ({
   buyOrders: state.buyOrders.data,
-  isLoading: state.buyOrders.buyOrdersLoading
+  isLoading: state.buyOrders.buyOrdersLoading,
+  buyOrderToUpdate: state.buyOrders.buyOrderToUpdate
 })
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({
-  onAddBuyOrders: (formData: IBuyOrder, cb: () => void) => dispatch( actions.buyOrderAdd(formData, cb) )
+  onAddBuyOrders: (formData: IBuyOrder, cb: () => void) => dispatch( actions.buyOrderAdd(formData, cb) ),
+  onUpdateBuyOrders: (formData: IBuyOrder, cb: () => void) => dispatch( actions.buyOrderUpdateSubmit(formData, cb) )
 })
 
 export const BuyOrderForm =  connect(mapStateToProps, mapDispatchToProps)(Container)
