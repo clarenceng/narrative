@@ -1,0 +1,9 @@
+@import '../../../styles/utils.scss';
+
+@media screen and (max-width: $breakpoint) {
+  .buy-order-listing {
+    overflow: auto;
+    box-shadow: none;
+    margin-top: var(--spacing-3);
+  }
+}

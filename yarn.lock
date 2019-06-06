@@ -6566,6 +6566,11 @@ inquirer@^6.1.0, inquirer@^6.2.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
+inter-ui@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/inter-ui/-/inter-ui-3.7.0.tgz#231c4928a28da094aa41efb26edceb309024f2ff"
+  integrity sha512-fu5Jn57nRRCNx3tNAgsEluCQG5fI+wfUyLeSNvG1CPkV5jSQ/HFAf4LxsoM6YOnGUddVbpohVCXT/7sZ3nkbVA==
+
 internal-ip@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-3.0.1.tgz#df5c99876e1d2eb2ea2d74f520e3f669a00ece27"

@@ -1,0 +1,11 @@
+$max-width: 1200px;
+$container-padding: var(--spacing-4);
+
+@mixin contentSpacing {
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+$breakpoint: 850px;

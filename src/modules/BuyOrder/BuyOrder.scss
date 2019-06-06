@@ -1,0 +1,26 @@
+@import '../../styles/utils.scss';
+
+.buy-order {
+  display: inline-block;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+}
+
+.buy-order__header {
+  height: 75px;
+  display: inline-block;
+  width: 100%;
+}
+
+.buy-order__header-inner {
+  @include contentSpacing;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.buy-order__content {
+  @include contentSpacing;
+  padding: var(--spacing-4);
+  box-shadow: 0 12px 60px 0 rgba(0,0,0,.11);
+}

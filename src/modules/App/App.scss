@@ -1,0 +1,24 @@
+@import '../../styles/utils.scss';
+
+.app {
+  display: block;
+  height: 100vh;
+}
+
+.app__header {
+  height: var(--header-height);
+  background: linear-gradient(#0c5fb5, #358ad4);
+}
+
+.app__header-container {
+  @include contentSpacing;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  h1 {
+   margin: 0;
+   font-weight: 500;
+   color: #fff;
+  }
+}

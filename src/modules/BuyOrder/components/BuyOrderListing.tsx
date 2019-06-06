@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Tr, Th, Td, Icon, Button, List, ListItem } from '../../../components';
 import { IBuyOrders, IBuyOrder } from '../../../types/BuyOrder';
 import { currency } from '../../../helpers';
+import './BuyOrderListing.scss';
 
 interface IBuyOrderListingProps extends IBuyOrders {
   handleOnDelete: (id: number) => void
@@ -13,7 +14,7 @@ export const BuyOrderListing = ({
   handleOnDelete,
   handleOnEdit
 }: IBuyOrderListingProps) => (
-  <Table>
+  <Table className='buy-order-listing'>
     <thead>
       <Tr>
         <Th>Name</Th>

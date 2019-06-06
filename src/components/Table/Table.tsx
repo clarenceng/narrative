@@ -12,12 +12,12 @@ export const Table = ({
   children
 }: ITable) => {
   const styles = classnames(
-    'c-table',
+    'c-table-container',
     className
   )
   return (
-    <div className='c-table-container'>
-      <table className={ styles }>{ children }</table>
+    <div className={ styles }>
+      <table className='c-table'>{ children }</table>
     </div>
   )
 }
