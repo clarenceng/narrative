@@ -24,7 +24,7 @@ export const BuyOrderListing = ({
       </Tr>
     </thead>
     <tbody>
-      { buyOrders.map((buyOrder: IBuyOrder) => (
+      { buyOrders.length ? buyOrders.map((buyOrder: IBuyOrder) => (
         <Tr key={ buyOrder.id }>
           <Td>{ buyOrder.name }</Td>
           <Td>{ currency(buyOrder.maxBidPrice) }</Td>
@@ -62,7 +62,7 @@ export const BuyOrderListing = ({
             </List>
           </Td>
         </Tr>
-      )) }
+      )) : null }
     </tbody>
   </Table>
 );

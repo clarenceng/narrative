@@ -49,6 +49,7 @@ const buyOrderAddFail = (error: string) => ({
 })
 
 export const buyOrderAdd = (formData: IBuyOrder, cb: () => void) => {
+  console.log('add', formData)
   const firebaseKey = formData.id - 1
   return (dispatch: Dispatch<any>) => {
     dispatch(buyOrderAddStart());

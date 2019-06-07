@@ -16,7 +16,7 @@ const dataPackageTypeOptions: IDataPackageTypeOptions[] = dataPackageTypes.map((
 }))
 
 export const initalFormData: IBuyOrder = {
-  id: 0,
+  id: 1,
   name: '',
   maxBidPrice: 0,
   dataPackageType: dataPackageTypeOptions[0].value
@@ -31,13 +31,15 @@ const Container = ({
 }: AppProps) => {
   const [formData, setFormData] = useState(initalFormData)
 
-  useEffect(() => {
+  const cleanFormData = () => {
     let newId: number = buyOrders.length ? buyOrders[buyOrders.length - 1].id : 0
     setFormData({
-      ...formData,
+      ...initalFormData,
       id: newId + 1
     })
-  }, [buyOrders])
+  }
+
+  useEffect(() => cleanFormData(), [buyOrders])
 
   useEffect(() => {
     if (buyOrderToUpdate) {
@@ -45,9 +47,9 @@ const Container = ({
     }
   }, [buyOrderToUpdate])
 
-  const handleOnSubmit = () => onAddBuyOrders(formData, () => setFormData(initalFormData))
+  const handleOnSubmit = () => onAddBuyOrders(formData, () => null)
 
-  const handleOnUpdate = () => onUpdateBuyOrders(formData, () => setFormData(initalFormData))
+  const handleOnUpdate = () => onUpdateBuyOrders(formData, cleanFormData)
 
   const handleOnCancel = () => setFormData(initalFormData)
 
