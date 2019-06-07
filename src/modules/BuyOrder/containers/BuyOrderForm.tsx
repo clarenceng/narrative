@@ -26,7 +26,8 @@ const Container = ({
   buyOrders,
   onAddBuyOrders,
   buyOrderToUpdate,
-  onUpdateBuyOrders
+  onUpdateBuyOrders,
+  isUpdating
 }: AppProps) => {
   const [formData, setFormData] = useState(initalFormData)
 
@@ -61,6 +62,7 @@ const Container = ({
   return (
     <BuyOrderFormComponent
       formData={ formData }
+      isUpdating={ isUpdating }
       dataPackageTypeOptions={ dataPackageTypeOptions }
       handleOnSubmit={ handleOnSubmit }
       handleOnUpdate={ handleOnUpdate }
@@ -73,7 +75,8 @@ const Container = ({
 const mapStateToProps = (state: AppState) => ({
   buyOrders: state.buyOrders.data,
   isLoading: state.buyOrders.buyOrdersLoading,
-  buyOrderToUpdate: state.buyOrders.buyOrderToUpdate
+  buyOrderToUpdate: state.buyOrders.buyOrderToUpdate,
+  isUpdating: state.buyOrders.buyOrderToUpdate ? true : false
 })
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> ) => ({

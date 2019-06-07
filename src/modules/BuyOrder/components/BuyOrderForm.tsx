@@ -10,6 +10,7 @@ interface IBuyOrderForm {
   handleOnUpdate: () => void
   handleOnCancel: () => void
   handleInputChange: (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
+  isUpdating: boolean
 }
 
 export const BuyOrderForm = ({
@@ -18,7 +19,8 @@ export const BuyOrderForm = ({
   handleOnSubmit,
   handleOnUpdate,
   handleOnCancel,
-  handleInputChange
+  handleInputChange,
+  isUpdating
 }: IBuyOrderForm) => (
   <form name='buyOrderForm'>
     <label>
@@ -55,7 +57,7 @@ export const BuyOrderForm = ({
 
     <List horizontal className='buy-order-form__actions'>
       <ListItem>
-        { formData && formData.name.length
+        { isUpdating
           ? (<Button
               type='button'
               appearance='default'
